@@ -129,7 +129,7 @@ export declare class OdataProvider implements OdataProviderOptions {
         greaterThanOrEqual: (col: string, value1: string) => string;
         inRange: (col: string, value1: string, value2: any) => string;
         equalsStr: (col: string, value1: string) => string;
-        notEqualStr: (col: string, value1: string, isCaseSensitiveStringFilter: boolean) => string;
+        notEqualStr: (col: string, value1: string) => string;
         contains: (col: string, value1: string) => string;
         notContains: (col: string, value1: string) => string;
         startsWith: (col: string, value1: string) => string;

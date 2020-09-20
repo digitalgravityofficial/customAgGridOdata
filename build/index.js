@@ -5761,8 +5761,8 @@ var OdataProvider = /** @class */ (function () {
             equalsStr: function (col, value1) {
                 return col + " eq " + value1;
             },
-            notEqualStr: function (col, value1, isCaseSensitiveStringFilter) {
-                return _this.ifTolowerCol(col, isCaseSensitiveStringFilter) + " ne " + _this.ifTolower(value1, isCaseSensitiveStringFilter);
+            notEqualStr: function (col, value1) {
+                return col + " ne " + value1;
             },
             contains: function (col, value1) {
                 return "substringof(" + _this.removeSpace(value1) + "," + col + ") eq true";
