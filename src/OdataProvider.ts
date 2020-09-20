@@ -169,10 +169,7 @@ export class OdataProvider implements OdataProviderOptions {
     equalsStr: (col: string, value1: string): string =>
       `${col} eq ${value1}`,
     notEqualStr: (col: string, value1: string, isCaseSensitiveStringFilter: boolean): string =>
-      `${this.ifTolowerCol(
-        col,
-        isCaseSensitiveStringFilter
-      )} ne ${this.ifTolower(value1, isCaseSensitiveStringFilter)}`,
+      `${col} ne ${(value1}`,
     contains: (col: string, value1: string,): string =>
       `substringof(${this.removeSpace(value1)},${col}) eq true`,
     notContains: (col: string, value1: string): string =>
