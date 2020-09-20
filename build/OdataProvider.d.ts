@@ -132,9 +132,9 @@ export declare class OdataProvider implements OdataProviderOptions {
         notEqualStr: (col: string, value1: string, isCaseSensitiveStringFilter: boolean) => string;
         contains: (col: string, value1: string) => string;
         notContains: (col: string, value1: string) => string;
-        startsWith: (col: string, value1: string, isCaseSensitiveStringFilter: boolean) => string;
-        endsWith: (col: string, value1: string, isCaseSensitiveStringFilter: boolean) => string;
-        inStr: (col: string, values: string[], isCaseSensitiveStringFilter: boolean) => string;
+        startsWith: (col: string, value1: string) => string;
+        endsWith: (col: string, value1: string) => string;
+        inStr: (col: string, values: string[]) => string;
         in: (col: string, values: string[]) => string;
         notIn: (col: string, values: string[]) => string;
         trunc: (col: string) => string;

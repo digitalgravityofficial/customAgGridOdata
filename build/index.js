@@ -5770,15 +5770,15 @@ var OdataProvider = /** @class */ (function () {
             notContains: function (col, value1) {
                 return "substringof(" + value1 + "," + col + ") eq false";
             },
-            startsWith: function (col, value1, isCaseSensitiveStringFilter) {
-                return "startswith(" + _this.ifTolowerCol(col, isCaseSensitiveStringFilter) + ",'" + value1 + "')  eq true";
+            startsWith: function (col, value1) {
+                return "startswith(" + col + ",'" + value1 + "')  eq true";
             },
-            endsWith: function (col, value1, isCaseSensitiveStringFilter) {
-                return "endswith(" + _this.ifTolowerCol(col, isCaseSensitiveStringFilter) + "," + _this.ifTolower(value1, isCaseSensitiveStringFilter) + ")  eq true";
+            endsWith: function (col, value1) {
+                return "endswith(" + col + "," + value1 + ")  eq true";
             },
-            inStr: function (col, values, isCaseSensitiveStringFilter) {
-                return _this.ifTolowerCol(col, isCaseSensitiveStringFilter) + " in (" + values
-                    .map(function (x) { return "'" + _this.ifTolower(x, isCaseSensitiveStringFilter) + "'"; })
+            inStr: function (col, values) {
+                return col + " in (" + values
+                    .map(function (x) { return "'" + x + "'"; })
                     .join() + ")";
             },
             in: function (col, values) { return col + " in (" + values.map(function (x) { return "" + x; }).join() + ")"; },
@@ -5894,7 +5894,7 @@ var OdataProvider = /** @class */ (function () {
                     return me.odataOperator[col.type](colName, "'" + moment(col.dateFrom).toISOString() + "'");
                 case 'set':
                     return col.values.length > 0
-                        ? me.odataOperator.inStr(colName, col.values, _this.isCaseSensitiveStringFilter)
+                        ? me.odataOperator.inStr(colName, col.values)
                         : '';
             }
             return '';
