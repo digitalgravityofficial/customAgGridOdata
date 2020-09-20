@@ -51,7 +51,7 @@
   "peerDependencies": {
     "@ag-grid-community/all-modules": "^22.0.0",
     "@ag-grid-enterprise/all-modules": "22.0.0",
-    "momnent": "2.27.0"
+    "moment": "^2.27.0"
   },
   "standard": {
     "parser": "babel-eslint",
