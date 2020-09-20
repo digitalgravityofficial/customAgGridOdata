@@ -175,7 +175,7 @@ export class OdataProvider implements OdataProviderOptions {
     notContains: (col: string, value1: string): string =>
       `substringof(${value1},${col}) eq false`,
     startsWith: (col: string, value1: string): string =>
-      `startswith(${col},'${value1}')  eq true`,
+      `startswith(${col},${value1})  eq true`,
     endsWith: (col: string, value1: string): string =>
       `endswith(${col},${value1})  eq true`,
     inStr: (col: string, values: string[]): string =>

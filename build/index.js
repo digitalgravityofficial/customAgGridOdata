@@ -103,7 +103,7 @@ var OdataProvider = /** @class */ (function () {
                 return "substringof(" + value1 + "," + col + ") eq false";
             },
             startsWith: function (col, value1) {
-                return "startswith(" + col + ",'" + value1 + "')  eq true";
+                return "startswith(" + col + "," + value1 + ")  eq true";
             },
             endsWith: function (col, value1) {
                 return "endswith(" + col + "," + value1 + ")  eq true";
