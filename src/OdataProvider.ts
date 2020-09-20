@@ -177,19 +177,13 @@ export class OdataProvider implements OdataProviderOptions {
       `substringof(${this.removeSpace(value1)},${col}) eq true`,
     notContains: (col: string, value1: string): string =>
       `substringof(${value1},${col}) eq false`,
-    startsWith: (col: string, value1: string, isCaseSensitiveStringFilter: boolean): string =>
-      `startswith(${this.ifTolowerCol(
-        col,
-        isCaseSensitiveStringFilter
-      )},'${value1}')  eq true`,
-    endsWith: (col: string, value1: string, isCaseSensitiveStringFilter: boolean): string =>
-      `endswith(${this.ifTolowerCol(
-        col,
-        isCaseSensitiveStringFilter
-      )},${this.ifTolower(value1, isCaseSensitiveStringFilter)})  eq true`,
-    inStr: (col: string, values: string[], isCaseSensitiveStringFilter: boolean): string =>
-      `${this.ifTolowerCol(col, isCaseSensitiveStringFilter)} in (${values
-        .map(x => `'${this.ifTolower(x, isCaseSensitiveStringFilter)}'`)
+    startsWith: (col: string, value1: string): string =>
+      `startswith(${col},'${value1}')  eq true`,
+    endsWith: (col: string, value1: string): string =>
+      `endswith(${col},${value1})  eq true`,
+    inStr: (col: string, values: string[]): string =>
+      `${col} in (${values
+        .map(x => `'${x}'`)
         .join()})`,
     in: (col: string, values: string[]) => `${col} in (${values.map(x => `${x}`).join()})`,
     notIn: (col: string, values: string[]) =>
@@ -315,7 +309,7 @@ export class OdataProvider implements OdataProviderOptions {
         )
       case 'set':
         return col.values.length > 0
-          ? me.odataOperator.inStr(colName, col.values, this.isCaseSensitiveStringFilter)
+          ? me.odataOperator.inStr(colName, col.values)
           : ''
       default:
         break
@@ -808,8 +802,7 @@ export class OdataProvider implements OdataProviderOptions {
           }
           options.sort = sort
           apply.push(
-            `groupby((${groups.join(',')})${
-            aggregate.length > 0 ? `,aggregate(${aggregate.join(',')})` : ''
+            `groupby((${groups.join(',')})${aggregate.length > 0 ? `,aggregate(${aggregate.join(',')})` : ''
             })`
           )
 
